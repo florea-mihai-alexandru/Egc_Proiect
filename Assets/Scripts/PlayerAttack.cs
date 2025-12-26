@@ -14,21 +14,37 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if(timeBtwAttack <= 0)
-        {
-            //poti ataca
-            if (Input.GetKey(KeyCode.Space))
-            {
-                Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, attackRange, whatIsEnemies); for (int i = 0; i < enemiesToDamage.Length; i++)
-                {
-                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
-                }
-            }
-            timeBtwAttack = startTimeBtwAttack;
-        }
-        else
+        // 1. Sc?dem timpul în fiecare frame, indiferent de orice altceva
+        if (timeBtwAttack > 0)
         {
             timeBtwAttack -= Time.deltaTime;
+        }
+
+        // 2. Verific?m ap?sarea tastei
+        if (Input.GetKey(KeyCode.Space))
+        {
+            // 3. Atac? DOAR dac? timpul a expirat
+            if (timeBtwAttack <= 0)
+            {
+                ExecuteAttack();
+                // 4. Reset?m timpul de a?teptare imediat dup? atac
+                timeBtwAttack = startTimeBtwAttack;
+            }
+        }
+    }
+
+    void ExecuteAttack()
+    {
+        Debug.Log("Atac executat !!!");
+        Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, attackRange, whatIsEnemies);
+
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            Enemy enemyScript = enemiesToDamage[i].GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(damage);
+            }
         }
     }
 
