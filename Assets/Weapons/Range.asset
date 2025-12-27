@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39017327ba9d294985f8b29d3467fe7, type: 3}
+  m_Name: Range
+  m_EditorClassIdentifier: 
+  weaponName: Range
+  damage: 50
+  attackSpeed: 0.5
+  attackRange: 1.5
+  offset: 0
+  weaponModel: {fileID: 0}
+  isRanged: 1
+  projectilePrefab: {fileID: 2847254803907788233, guid: f21e8ca9103e41540842f5ffe62729a8,
+    type: 3}
+  projectileSpeed: 12

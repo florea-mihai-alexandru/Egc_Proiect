@@ -1522,6 +1522,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1410965180444894118, guid: b5c539d8e9849a94e81274a4db7f82c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c539d8e9849a94e81274a4db7f82c8, type: 3}
 --- !u!1 &1410965180343935092 stripped
@@ -1566,6 +1571,12 @@ PrefabInstance:
       propertyPath: attackRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1329064751763347432, guid: 902ac79acb60ddd48b84aade9825d8cb,
+        type: 3}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: c69f7a134a0796f4099f8af0f2ebd8d7,
+        type: 2}
     - target: {fileID: 1329064751763347432, guid: 902ac79acb60ddd48b84aade9825d8cb,
         type: 3}
       propertyPath: startTimeBtwAttack

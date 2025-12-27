@@ -1,56 +1,90 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float timeBtwAttack;
-    public float startTimeBtwAttack;
+    [Header("Weapon Settings")]
+    public WeaponData currentWeapon;
 
+    private float timeBtwAttack;
+
+    [Header("Detection Settings")]
     public Transform attackPos;
     public LayerMask whatIsEnemies;
-    public float attackRange;
-    public int damage;
 
     private void Update()
     {
-        // 1. Sc?dem timpul în fiecare frame, indiferent de orice altceva
         if (timeBtwAttack > 0)
         {
             timeBtwAttack -= Time.deltaTime;
         }
 
-        // 2. Verific?m ap?sarea tastei
-        if (Input.GetKey(KeyCode.Space))
+        if (timeBtwAttack <= 0 && currentWeapon != null)
         {
-            // 3. Atac? DOAR dac? timpul a expirat
-            if (timeBtwAttack <= 0)
-            {
-                ExecuteAttack();
-                // 4. Reset?m timpul de a?teptare imediat dup? atac
-                timeBtwAttack = startTimeBtwAttack;
-            }
+            CheckInput();
         }
     }
 
-    void ExecuteAttack()
+    private void CheckInput()
     {
-        Debug.Log("Atac executat !!!");
-        Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, attackRange, whatIsEnemies);
+        if (Input.GetKeyDown(KeyCode.UpArrow)) Attack(new Vector3(0, 0, 1));
+        else if (Input.GetKeyDown(KeyCode.DownArrow)) Attack(new Vector3(0, 0, -1));
+        else if (Input.GetKeyDown(KeyCode.LeftArrow)) Attack(new Vector3(-1, 0, 0));
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) Attack(new Vector3(1, 0, 0));
+    }
 
-        for (int i = 0; i < enemiesToDamage.Length; i++)
+    void Attack(Vector3 pos)
+    {
+        timeBtwAttack = currentWeapon.attackSpeed;
+        Debug.Log("Atac cu " + currentWeapon.weaponName);
+
+        if (currentWeapon.isRanged)
         {
-            Enemy enemyScript = enemiesToDamage[i].GetComponent<Enemy>();
+            ExecuteRangedAttack(pos);
+        }
+        else
+        {
+            ExecuteMeleeAttack(pos);
+        }
+    }
+
+    void ExecuteRangedAttack(Vector3 direction)
+    {
+        if (currentWeapon.projectilePrefab != null)
+        {
+            GameObject bullet = Instantiate(currentWeapon.projectilePrefab, attackPos.position, Quaternion.identity);
+            Projectile projScript = bullet.GetComponent<Projectile>();
+            if (projScript != null)
+            {
+                projScript.Setup(direction, currentWeapon.projectileSpeed, currentWeapon.damage);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Lipseste Prefab-ul proiectilului pe arma: " + currentWeapon.weaponName);
+        }
+    }
+
+    void ExecuteMeleeAttack(Vector3 direction)
+    {
+        attackPos.localPosition = direction * currentWeapon.offset;
+        Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange, whatIsEnemies);
+
+        foreach (Collider enemy in enemiesToDamage)
+        {
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript != null)
             {
-                enemyScript.TakeDamage(damage);
+                enemyScript.TakeDamage(currentWeapon.damage);
             }
         }
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        if (currentWeapon != null && attackPos != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPos.position, currentWeapon.attackRange);
+        }
     }
 }
