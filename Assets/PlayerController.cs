@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         Vector3 moveDir = new Vector3(x, 0, y);
-
+        //Debug.Log(x + y);
         rb.velocity = moveDir * speed;
 
         if (x == 0 && y == 0)
