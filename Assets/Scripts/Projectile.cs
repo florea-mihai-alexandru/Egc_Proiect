@@ -25,13 +25,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player")) return;
         // Cautam componenta Enemy pe orice obiect atingem
         Enemy enemyScript = other.GetComponent<Enemy>();
 
         if (enemyScript != null)
         {
             enemyScript.TakeDamage(damage);
-            Destroy(gameObject); 
         }
+        Destroy(gameObject); 
     }
 }
