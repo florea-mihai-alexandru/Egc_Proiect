@@ -66,7 +66,9 @@ public class PlayerAttack : MonoBehaviour
 
     void ExecuteMeleeAttack(Vector3 direction)
     {
-        attackPos.localPosition = direction * currentWeapon.offset;
+        float scaleCompensation = transform.lossyScale.x;
+        attackPos.localPosition = (direction * currentWeapon.offset) / scaleCompensation;
+        
         Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange, whatIsEnemies);
 
         foreach (Collider enemy in enemiesToDamage)
