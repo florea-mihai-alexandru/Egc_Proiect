@@ -49,6 +49,7 @@ public class PlayerAttack : MonoBehaviour
 
     void ExecuteRangedAttack(Vector3 direction)
     {
+        attackPos.localPosition = new Vector3(0, attackPos.localPosition.y, 0);
         if (currentWeapon.projectilePrefab != null)
         {
             GameObject bullet = Instantiate(currentWeapon.projectilePrefab, attackPos.position, Quaternion.identity);
@@ -73,10 +74,15 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider enemy in enemiesToDamage)
         {
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null)
+            Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
+
+            if (Vector3.Dot(direction, dirToEnemy) > 0.1f)
             {
-                enemyScript.TakeDamage(currentWeapon.damage);
+                Enemy enemyScript = enemy.GetComponent<Enemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.TakeDamage(currentWeapon.damage);
+                }
             }
         }
     }

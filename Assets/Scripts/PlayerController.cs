@@ -20,8 +20,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float x = 0;
+        float y = 0;
+
+        if (Input.GetKey(KeyCode.D)) x = 1;
+        else if (Input.GetKey(KeyCode.A)) x = -1;
+
+        if (Input.GetKey(KeyCode.W)) y = 1;
+        else if (Input.GetKey(KeyCode.S)) y = -1;
 
         Vector3 moveDir = new Vector3(x, 0, y);
         //Debug.Log(x + y);
