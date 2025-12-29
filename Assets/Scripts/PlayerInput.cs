@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour //Controller universal pentru inputuri 
 {
     public UnityEvent<Vector3> OnMovementInput;
     public UnityEvent<Vector3> OnAttack;
