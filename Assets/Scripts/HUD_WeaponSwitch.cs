@@ -6,7 +6,7 @@ using UnityEngine;
 public class HUD_WeaponSwitch : MonoBehaviour
 {
     public int selectedWeapon = 0;
-    public PlayerAttack playerAttack;
+    public CombatManager playerAttack;
     public WeaponData[] allWeapons;
 
     public Transform weaponHolderHUD;
