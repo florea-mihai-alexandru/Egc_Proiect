@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39017327ba9d294985f8b29d3467fe7, type: 3}
   m_Name: Tastatura
   m_EditorClassIdentifier: 
-  weaponName: 
-  damage: 0
-  attackSpeed: 0
-  attackRange: 0
-  offset: 0
+  weaponName: Tastatura
+  damage: 100
+  attackSpeed: 0.2
+  attackRange: 0.6
+  offset: 1
   weaponModel: {fileID: 0}
+  isRanged: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 0

@@ -6,10 +6,13 @@ using UnityEngine;
 public class HUD_WeaponSwitch : MonoBehaviour
 {
     public int selectedWeapon = 0;
+    public PlayerAttack playerAttack;
+
+    public WeaponData[] allWeapons;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SelectWeapon();
     }
 
     // Update is called once per frame
@@ -43,6 +46,12 @@ public class HUD_WeaponSwitch : MonoBehaviour
             if (i == selectedWeapon)
             {
                 weapon.gameObject.SetActive(true);
+
+                //Trimite datele armei catre PlayerAttack
+                if (playerAttack != null && allWeapons.Length > i)
+                {
+                    playerAttack.currentWeapon = allWeapons[i];
+                }
             }
             else
             {
