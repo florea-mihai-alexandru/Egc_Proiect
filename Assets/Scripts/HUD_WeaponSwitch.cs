@@ -6,10 +6,16 @@ using UnityEngine;
 public class HUD_WeaponSwitch : MonoBehaviour
 {
     public int selectedWeapon = 0;
+    public PlayerAttack playerAttack;
+    public WeaponData[] allWeapons;
+
+    public Transform weaponHolderHUD;
+    public Transform weaponHolderPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SelectWeapon();
     }
 
     // Update is called once per frame
@@ -20,14 +26,14 @@ public class HUD_WeaponSwitch : MonoBehaviour
             selectedWeapon--;
             if ( selectedWeapon < 0 )
             { 
-                selectedWeapon = transform.childCount-1;
+                selectedWeapon = allWeapons.Length - 1;
             }
             SelectWeapon();
         }
         if ( Input.GetKeyDown(KeyCode.E) )
         {
             selectedWeapon++;
-            if ( selectedWeapon >= transform.childCount )
+            if ( selectedWeapon >= allWeapons.Length )
             { 
                 selectedWeapon = 0;
             }
@@ -37,18 +43,29 @@ public class HUD_WeaponSwitch : MonoBehaviour
 
     void SelectWeapon()
     {
-        int i = 0;
-        foreach(Transform weapon in transform)
+        //Sincronizare date atac
+        if (playerAttack != null && allWeapons.Length > selectedWeapon)
         {
-            if (i == selectedWeapon)
+            playerAttack.currentWeapon = allWeapons[selectedWeapon];
+        }
+
+        //Control vizual HUD (folosind weaponHolderHUD)
+        int i = 0;
+        foreach (Transform weapon in weaponHolderHUD)
+        {
+            weapon.gameObject.SetActive(i == selectedWeapon);
+            i++;
+        }
+
+        //Control vizual Player (folosind weaponHolderPlayer)
+        if (weaponHolderPlayer != null)
+        {
+            int j = 0;
+            foreach (Transform weapon in weaponHolderPlayer)
             {
-                weapon.gameObject.SetActive(true);
+                weapon.gameObject.SetActive(j == selectedWeapon);
+                j++;
             }
-            else
-            {
-                weapon.gameObject.SetActive(false);
-            }
-                i++;
         }
     }
 }
