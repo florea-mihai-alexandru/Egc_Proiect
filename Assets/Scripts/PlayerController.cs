@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) y = 1;
         else if (Input.GetKey(KeyCode.S)) y = -1;
 
-        Vector3 moveDir = new Vector3(x, 0, y);
+        Vector3 moveDir = new Vector3(x, 0, y).normalized;
         //Debug.Log(x + y);
         rb.velocity = moveDir * speed;
 
