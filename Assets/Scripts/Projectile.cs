@@ -5,10 +5,10 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private float speed;
-    private int damage;
+    private float damage;
     private Vector3 direction;
 
-    public void Setup(Vector3 dir, float spd, int dmg)
+    public void Setup(Vector3 dir, float spd, float dmg)
     {
         this.direction = dir;
         this.speed = spd;
@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player")) return;
         // Cautam componenta Enemy pe orice obiect atingem
-        Enemy enemyScript = other.GetComponent<Enemy>();
+        PlayerStats enemyScript = other.GetComponent<PlayerStats>();
 
         if (enemyScript != null)
         {

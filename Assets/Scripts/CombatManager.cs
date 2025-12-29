@@ -1,6 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class CombatManager : MonoBehaviour
 {
     [Header("Weapon Settings")]
     public WeaponData currentWeapon;
@@ -17,33 +18,24 @@ public class PlayerAttack : MonoBehaviour
         {
             timeBtwAttack -= Time.deltaTime;
         }
+    }
 
-        if (timeBtwAttack <= 0 && currentWeapon != null)
+    public void Attack(Vector3 direction)
+    {
+        if (timeBtwAttack > 0)
         {
-            CheckInput();
+            return;
         }
-    }
-
-    private void CheckInput()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) Attack(new Vector3(0, 0, 1));
-        else if (Input.GetKeyDown(KeyCode.DownArrow)) Attack(new Vector3(0, 0, -1));
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)) Attack(new Vector3(-1, 0, 0));
-        else if (Input.GetKeyDown(KeyCode.RightArrow)) Attack(new Vector3(1, 0, 0));
-    }
-
-    void Attack(Vector3 pos)
-    {
         timeBtwAttack = currentWeapon.attackSpeed;
         Debug.Log("Atac cu " + currentWeapon.weaponName);
 
         if (currentWeapon.isRanged)
         {
-            ExecuteRangedAttack(pos);
+            ExecuteRangedAttack(direction);
         }
         else
         {
-            ExecuteMeleeAttack(pos);
+            ExecuteMeleeAttack(direction);
         }
     }
 
@@ -72,19 +64,23 @@ public class PlayerAttack : MonoBehaviour
         
         Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange, whatIsEnemies);
 
+        Debug.Log(enemiesToDamage.Length);
+
         foreach (Collider enemy in enemiesToDamage)
         {
             Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
 
-            if (Vector3.Dot(direction, dirToEnemy) > 0.1f)
-            {
-                Enemy enemyScript = enemy.GetComponent<Enemy>();
+            //if (Vector3.Dot(direction, dirToEnemy) > 0.1f)
+            //{
+                PlayerStats enemyScript = enemy.GetComponentInChildren<PlayerStats>();
                 if (enemyScript != null)
                 {
+                    Debug.Log(currentWeapon.damage);
                     enemyScript.TakeDamage(currentWeapon.damage);
                 }
-            }
+            //}
         }
+        Debug.Log(currentWeapon.name + " " + currentWeapon.damage);
     }
 
     private void OnDrawGizmosSelected()
