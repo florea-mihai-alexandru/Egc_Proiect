@@ -7589,7 +7589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aaf9484dd26ea4084df72d1e83f051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level2-3
+  sceneToLoad: Level2-3G
   playerTag: Player
   levelLoader: {fileID: 222003585}
 --- !u!33 &5576183844503991953
@@ -9261,6 +9261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aaf9484dd26ea4084df72d1e83f051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level2-2
+  sceneToLoad: Level2-2G
   playerTag: Player
   levelLoader: {fileID: 222003585}
