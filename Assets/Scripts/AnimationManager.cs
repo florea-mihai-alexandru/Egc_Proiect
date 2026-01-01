@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
@@ -23,12 +25,12 @@ public class AnimationManager : MonoBehaviour
         }
         else if (x != 0 && x < 0)
         {
-            spriteRenderer.flipX = false;
+            FlipX(false);
             animator.Play("PlayerWalkSide");
         }
         else if (x != 0 && x > 0)
         {
-            spriteRenderer.flipX = true;
+            FlipX(true);
             animator.Play("PlayerWalkSide");
         }
         else if (y > 0)
@@ -38,6 +40,21 @@ public class AnimationManager : MonoBehaviour
         else if (y < 0)
         {
             animator.Play("PlayerWalkBack");
+        }
+    }
+
+    public void FlipX(bool flip)
+    {
+        Vector3 scale = gameObject.transform.localScale;
+        if (flip) 
+        {
+            scale.x = -math.abs(scale.x);
+            transform.localScale = scale;
+        }
+        else
+        {
+            scale.x = math.abs(scale.x);
+            transform.localScale = scale;
         }
     }
 }
