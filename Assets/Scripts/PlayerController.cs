@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
     public float speed;
+
+    public float walkSlowdown = 0.25f;
 
     public Rigidbody rb;
 
@@ -16,8 +19,11 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStats stats;
 
+    private bool isWalking = false;
+
     public Vector3 MoveDir { get => moveDir; set => moveDir = value; }
     public Vector3 AttackDir { get => attackDir; set => attackDir = value; }
+    public bool IsWalking { get => isWalking; set => isWalking = value; }
 
     void Start()
     {
@@ -29,8 +35,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        move(MoveDir);
+        move(MoveDir, speed);
         animationManager.PlayAnimation(moveDir);
+
         if(stats.Health <= 0)
         {
             ExecuteDeath();
@@ -47,9 +54,16 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void move(Vector3 direction)
+    public void move(Vector3 direction, float speed)
     {
-        rb.velocity = direction * speed;
+        if (isWalking)
+        {
+            rb.velocity = direction * speed * walkSlowdown;
+        }
+        else
+        {
+            rb.velocity = direction * speed;
+        }
     }
 
     public void TakeDamage(float dmg)

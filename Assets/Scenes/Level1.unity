@@ -2102,6 +2102,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384451882}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &417128630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417128632}
+  - component: {fileID: 417128631}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417128631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417128630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1850d31cb7d619548b9e24660b8febdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnMovementInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2015491443028858823}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: set_MoveDir
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2015491443028858819}
+        m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &417128632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417128630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.943077, y: 2.1843832, z: 153.27094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &432157116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,7 +4259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794135977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.017, y: 0.037, z: -0}
+  m_LocalPosition: {x: -0.0411, y: 0.0604, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6147,6 +6221,21 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 128
+  attackAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1101766139}
+        m_TargetAssemblyTypeName: AnimationManager, Assembly-CSharp
+        m_MethodName: AttackAnim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1101766145 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2015491442351368557, guid: 902ac79acb60ddd48b84aade9825d8cb,
@@ -6177,12 +6266,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f741154b0b68ed147ab95b58340bc98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnMovementInput:
+  OnMoveEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1101766145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: set_MoveDir
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ToggleWalkEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1101766145}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: set_IsWalking
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6208,9 +6312,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   player: {fileID: 567907704}
-  chaseDistanceThreshold: 3
+  chaseDistanceThreshold: 5
   attackDistanceThreshold: 1
   attackDelay: 1.2
+  patrolTime: 3
+  idleTime: 2
+  wallRange: 2
 --- !u!114 &1101766153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6778,6 +6885,11 @@ PrefabInstance:
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 2015491443028858819}
+    - target: {fileID: 5606714077662616462, guid: 5156d4af3beebb640b0948e350dfa92e,
+        type: 3}
+      propertyPath: selectedWeapon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5606714077662616462, guid: 5156d4af3beebb640b0948e350dfa92e,
         type: 3}
       propertyPath: weaponHolderHUD
@@ -12286,6 +12398,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2015491442351368557, guid: 902ac79acb60ddd48b84aade9825d8cb,
+        type: 3}
+      propertyPath: walkSlowdown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6327329983136628299, guid: 902ac79acb60ddd48b84aade9825d8cb,
         type: 3}
       propertyPath: cam
@@ -12317,6 +12434,21 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
+  attackAnimEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2015491443028858826}
+        m_TargetAssemblyTypeName: AnimationManager, Assembly-CSharp
+        m_MethodName: AttackAnim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2015491443028858823 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2015491442351368557, guid: 902ac79acb60ddd48b84aade9825d8cb,
@@ -12329,48 +12461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2387431d244f3ff4f97a4970e3dbe582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2015491443028858825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015491443028858818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1850d31cb7d619548b9e24660b8febdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnMovementInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2015491443028858823}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: set_MoveDir
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2015491443028858823}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: PerformAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2015491443028858826
 MonoBehaviour:
   m_ObjectHideFlags: 0

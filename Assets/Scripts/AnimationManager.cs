@@ -7,39 +7,69 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     Animator animator;
-    SpriteRenderer spriteRenderer;
+
+    float attackTime;
+    float deathTime;
+
+    float playingFor = 0;
+
+    bool attacking = false;
 
     private void Awake()  
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        UpdateAnimClipTimes();
     }
 
     public void PlayAnimation(Vector3 movementInput)
     {
         float x = movementInput.x;
         float y = movementInput.z;
-        if (x == 0 && y == 0)
+
+        if (attacking)
         {
-            animator.Play("PlayerIdle");
+            if (playingFor >= attackTime)
+            {
+                attacking = false;
+                animator.SetBool("Attacking", attacking);
+            }
+
+            playingFor += Time.deltaTime;
         }
-        else if (x != 0 && x < 0)
+
+        animator.SetFloat("yVelocity", y);
+        animator.SetFloat("xVelocity", x);
+
+        animator.SetFloat("magnitude", movementInput.magnitude);
+
+        if (x < 0)
         {
             FlipX(false);
-            animator.Play("PlayerWalkSide");
         }
-        else if (x != 0 && x > 0)
+        else if (x > 0)
         {
             FlipX(true);
-            animator.Play("PlayerWalkSide");
         }
-        else if (y > 0)
+    }
+
+    public void UpdateAnimClipTimes()
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
         {
-            animator.Play("PlayerWalkForward");
-        }
-        else if (y < 0)
-        {
-            animator.Play("PlayerWalkBack");
+            switch (clip.name)
+            {
+                case "Attack":
+                    attackTime = clip.length;
+                    break;
+                case "Death":
+                    deathTime = clip.length;
+                    break;
+            }
         }
     }
 
@@ -56,5 +86,20 @@ public class AnimationManager : MonoBehaviour
             scale.x = math.abs(scale.x);
             transform.localScale = scale;
         }
+    }
+
+    public void AttackAnim(Vector3 direction)
+    {
+        if (direction.x < 0)
+        {
+            FlipX(false);
+        }
+        else if (direction.x > 0)
+        {
+            FlipX(true);
+        }
+        attacking = true;
+        animator.SetBool("Attacking", attacking);
+        playingFor = 0;
     }
 }
