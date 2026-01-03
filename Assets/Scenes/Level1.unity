@@ -4918,6 +4918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2015491442351368552, guid: 902ac79acb60ddd48b84aade9825d8cb,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015491442351368552, guid: 902ac79acb60ddd48b84aade9825d8cb,
+        type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -5011,6 +5016,11 @@ PrefabInstance:
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3888894477141685669, guid: 902ac79acb60ddd48b84aade9825d8cb,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1ea1c59d027b28c4ba2135a4c5d806f4, type: 2}
     - target: {fileID: 6327329983136628299, guid: 902ac79acb60ddd48b84aade9825d8cb,
         type: 3}
       propertyPath: cam
@@ -5792,7 +5802,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021540551}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be9973110c1824e4b8a4cd3d83987744, type: 3}
   m_Name: 

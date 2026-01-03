@@ -88,6 +88,12 @@ public class EnemyAI : MonoBehaviour
     {
         OnMoveEvent?.Invoke(Vector3.zero);
 
+        idledForTime += Time.deltaTime;
+        if (idledForTime > idleTime)
+        {
+            SwitchState(AI_State.Patrolling);
+        }
+
         if (player == null)
             return;
 
@@ -100,12 +106,6 @@ public class EnemyAI : MonoBehaviour
         else if (distanceToPlayer < chaseDistanceThreshold)
         {
             SwitchState(AI_State.Chasing);
-        }
-
-        idledForTime += Time.deltaTime;
-        if (idledForTime > idleTime)
-        {
-            SwitchState(AI_State.Patrolling);
         }
     }
 
@@ -113,6 +113,12 @@ public class EnemyAI : MonoBehaviour
     {
         OnMoveEvent?.Invoke(randWalkDir.normalized);
 
+        patrolledTime += Time.deltaTime;
+        if (patrolledTime > patrolTime)
+        {
+            SwitchState(AI_State.Idle);
+        }
+
         if (player == null)
             return;
 
@@ -126,16 +132,15 @@ public class EnemyAI : MonoBehaviour
         {
             SwitchState(AI_State.Chasing);
         }
-
-        patrolledTime += Time.deltaTime;
-        if (patrolledTime > patrolTime)
-        {
-            SwitchState(AI_State.Idle);
-        }
     }
 
     private void ChasingStateUpdate()
     {
+        if (player.IsDestroyed())
+        {
+            SwitchState(AI_State.Idle);
+            return;
+        }
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
         directionToPlayer = player.position - transform.position;
 
@@ -158,6 +163,12 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackingStateUpdate()
     {
+        if (player.IsDestroyed())
+        {
+            SwitchState(AI_State.Idle);
+            return;
+        }
+
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
         directionToPlayer = player.position - transform.position;
 
