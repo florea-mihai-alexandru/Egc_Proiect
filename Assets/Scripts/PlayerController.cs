@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         move(MoveDir);
         animationManager.PlayAnimation(moveDir);
         if(stats.Health <= 0)
