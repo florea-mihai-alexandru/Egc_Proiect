@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb;
 
-    private Vector3 moveDir;
+    private Vector3 moveDir = Vector3.zero;
     private Vector3 attackDir;
 
     private CombatManager combatManager;

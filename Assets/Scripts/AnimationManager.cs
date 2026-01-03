@@ -6,14 +6,21 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
 
-    float attackTime;
-    float deathTime;
+    public float attackTime;
+    public float deathTime;
 
-    float playingFor = 0;
+    public float playingFor = 0;
 
-    bool attacking = false;
+    private bool attacking = false;
+
+    private Vector3 originalScale;
+
+    private Vector3 idleScale;
+
+    private AnimatorClipInfo[] curAnimatorClipInfos;
+    private string curAnimName;
 
     private void Awake()  
     {
@@ -23,6 +30,8 @@ public class AnimationManager : MonoBehaviour
     private void Start()
     {
         UpdateAnimClipTimes();
+        idleScale = new Vector3(0.2f, 0.2f, 1);
+        originalScale = transform.localScale;
     }
 
     public void PlayAnimation(Vector3 movementInput)
@@ -46,6 +55,15 @@ public class AnimationManager : MonoBehaviour
 
         animator.SetFloat("magnitude", movementInput.magnitude);
 
+        //if (curAnimName.Equals("EnemyIdle"))
+        //{
+        //    gameObject.transform.localScale = idleScale;
+        //}
+        //else
+        //{
+        //    gameObject.transform.localScale = originalScale;
+        //}
+
         if (x < 0)
         {
             FlipX(false);
@@ -64,10 +82,15 @@ public class AnimationManager : MonoBehaviour
             switch (clip.name)
             {
                 case "Attack":
+                    Debug.Log("at");
                     attackTime = clip.length;
                     break;
                 case "Death":
+                    Debug.Log("de");
                     deathTime = clip.length;
+                    break;
+                case "Idle":
+                    Debug.Log("id");
                     break;
             }
         }
