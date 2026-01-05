@@ -14,8 +14,6 @@ public class CombatManager : MonoBehaviour
     public Transform attackPos;
     public LayerMask whatIsEnemies;
 
-    public UnityEvent<Vector3> attackAnimEvent;
-
     private void Update()
     {
         if (timeBtwAttack > 0)
@@ -31,7 +29,6 @@ public class CombatManager : MonoBehaviour
             return;
         }
         timeBtwAttack = currentWeapon.attackSpeed;
-        Debug.Log("Atac cu " + currentWeapon.weaponName);
 
         if (currentWeapon.isRanged)
         {
@@ -41,8 +38,6 @@ public class CombatManager : MonoBehaviour
         {
             StartCoroutine(ExecuteMeleeAttack(direction));
         }
-
-        attackAnimEvent?.Invoke(direction);
     }
 
     void ExecuteRangedAttack(Vector3 direction)
@@ -84,7 +79,6 @@ public class CombatManager : MonoBehaviour
                 }
             //}
         }
-        Debug.Log(currentWeapon.name + " " + currentWeapon.damage);
     }
 
     private void OnDrawGizmosSelected()

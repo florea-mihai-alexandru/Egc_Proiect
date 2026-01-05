@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro.Examples;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
+using UnityEditor.Rendering;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,6 +41,28 @@ public class EnemyAI : MonoBehaviour
     float distanceToPlayer;
     Vector3 directionToPlayer;
 
+    [SerializeField]
+    float rotationSpeed;
+
+    [SerializeField]
+    private float obstacleCheckRadius;
+
+    [SerializeField]
+    private float obstacleCheckDistance;
+
+    [SerializeField]
+    private LayerMask obstacleLayerMask;
+
+    [SerializeField]
+    private LayerMask wallLayerMask;
+
+    private float obstacleAvoidanceColldown = 0.5f;
+    private Vector3 obstacleAvoidanceTargetDir;
+
+    private RaycastHit[] obstacleCollisions;
+
+    Collider entityCollider;
+
     #region State Variables
     private enum AI_State
     {
@@ -55,11 +80,12 @@ public class EnemyAI : MonoBehaviour
     {
         currentState = AI_State.Patrolling;
         InitState();
+        entityCollider = GetComponent<Collider>();
     }
 
     private void Update()
     {
-        switch(currentState)
+        switch (currentState)
         {
             case AI_State.Idle:
                 IdleStateUpdate();
@@ -111,7 +137,11 @@ public class EnemyAI : MonoBehaviour
 
     private void PatrollStateUpdate()
     {
-        OnMoveEvent?.Invoke(randWalkDir.normalized);
+        randWalkDir.y = 0;
+        randWalkDir.Normalize();
+
+        Vector3 finalDir = HandleObstacles(randWalkDir);
+        OnMoveEvent?.Invoke(finalDir);
 
         patrolledTime += Time.deltaTime;
         if (patrolledTime > patrolTime)
@@ -142,9 +172,19 @@ public class EnemyAI : MonoBehaviour
             return;
         }
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        directionToPlayer = player.position - transform.position;
 
-        OnMoveEvent?.Invoke(directionToPlayer.normalized);
+        obstacleAvoidanceColldown -= Time.deltaTime;
+        if (obstacleAvoidanceColldown <= 0)
+        {
+            directionToPlayer = player.position - transform.position;
+            obstacleAvoidanceColldown = 0.5f;
+        }
+
+        directionToPlayer.y = 0;
+        directionToPlayer.Normalize();
+        Vector3 finalDir = HandleObstacles(directionToPlayer);
+
+        OnMoveEvent?.Invoke(finalDir);
 
         if (passedAttackTime < attackDelay)
         {
@@ -240,9 +280,74 @@ public class EnemyAI : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, wallRange);
     }
 
-    private void CheckIfWall()
+    private void OnDrawGizmos()
     {
+        Vector3 direction = getCurDir();
 
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position + direction*obstacleCheckDistance, obstacleCheckRadius);
+    }
+
+    private Vector3 HandleObstacles(Vector3 direction)
+    {
+        direction.y = 0f;
+
+        if ((obstacleCollisions = Physics.SphereCastAll(transform.position, obstacleCheckRadius, direction, obstacleCheckDistance, ~obstacleLayerMask)).Length>0)
+        {
+            foreach (var collision in obstacleCollisions)
+            {
+                if (collision.transform.gameObject == gameObject)
+                {
+                    continue;
+                }
+
+                obstacleAvoidanceTargetDir = collision.normal;
+                Vector3 avoidDir = Vector3.ProjectOnPlane(direction, obstacleAvoidanceTargetDir);
+                avoidDir.y = 0f;
+                avoidDir.Normalize();
+
+                if (avoidDir.sqrMagnitude > 0.001f)
+                    return avoidDir.normalized;
+                break;
+            }
+        }
+        return direction;
+    }
+
+
+    private Vector3 getCurDir()
+    {
+        Vector3 direction = Vector3.zero;
+        if (currentState == AI_State.Patrolling)
+        {
+            direction = randWalkDir;
+        }
+        else if (currentState == AI_State.Chasing)
+        {
+            direction = directionToPlayer;
+        }
+        return direction;
+    }
+
+    private void setCurDir(Vector3 direction)
+    {
+        if (currentState == AI_State.Patrolling)
+        {
+            randWalkDir = direction;
+        }
+        else if (currentState == AI_State.Chasing)
+        {
+            directionToPlayer = direction;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("colideaza");
+        if ((wallLayerMask & (0 << collision.gameObject.layer)) != 0)
+        {
+            Debug.Log("perete");
+        }
     }
     #endregion
 }

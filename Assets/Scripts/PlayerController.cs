@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStats stats;
 
     private bool isWalking = false;
+    private bool dead = false;
 
     public Vector3 MoveDir { get => moveDir; set => moveDir = value; }
     public Vector3 AttackDir { get => attackDir; set => attackDir = value; }
@@ -42,29 +44,51 @@ public class PlayerController : MonoBehaviour
 
         if(stats.Health <= 0)
         {
-            ExecuteDeath();
+            if (!dead)
+            {
+                StartCoroutine(ExecuteDeath());
+            }
         }
     }
 
     public void PerformAttack(Vector3 direction)
     {
-        combatManager.Attack(direction);
+        if (!dead)
+        {
+            combatManager.Attack(direction);
+            animationManager.AttackAnim(direction);
+        }
     }
 
-    public void ExecuteDeath()
+    public IEnumerator ExecuteDeath()
     {
+        foreach(Transform child in gameObject.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        dead = true;
+        yield return animationManager.DeathAnim();
         Destroy(gameObject);
     }
 
     public void move(Vector3 direction, float speed)
     {
-        if (isWalking)
+        if (dead)
         {
-            rb.velocity = direction * speed * walkSlowdown;
+            rb.velocity = Vector3.zero;
         }
         else
         {
-            rb.velocity = direction * speed;
+            if (isWalking)
+            {
+                rb.velocity = direction * speed * walkSlowdown;
+                animationManager.PlayAnimation(direction);
+            }
+            else
+            {
+                rb.velocity = direction * speed;
+                animationManager.PlayAnimation(direction);
+            }
         }
     }
 

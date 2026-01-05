@@ -125,4 +125,10 @@ public class AnimationManager : MonoBehaviour
         animator.SetBool("Attacking", attacking);
         playingFor = 0;
     }
+
+    public WaitForSeconds DeathAnim()
+    {
+        animator.SetBool("Death", true);
+        return new WaitForSeconds(deathTime);
+    }
 }
