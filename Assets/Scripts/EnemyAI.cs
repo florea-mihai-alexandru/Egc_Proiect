@@ -344,8 +344,12 @@ public class EnemyAI : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("colideaza");
-        if ((wallLayerMask & (0 << collision.gameObject.layer)) != 0)
+        if ((wallLayerMask & (1 << collision.gameObject.layer)) != 0)
         {
+            if (currentState == AI_State.Patrolling)
+            {
+                randWalkDir = -randWalkDir;
+            }
             Debug.Log("perete");
         }
     }

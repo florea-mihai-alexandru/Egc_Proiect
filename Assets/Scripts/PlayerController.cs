@@ -55,9 +55,17 @@ public class PlayerController : MonoBehaviour
     {
         if (!dead)
         {
-            combatManager.Attack(direction);
-            animationManager.AttackAnim(direction);
+            //combatManager.Attack(direction);
+            //animationManager.AttackAnim(direction);
+            StartCoroutine(AttackAction(direction));
         }
+    }
+
+    public IEnumerator AttackAction(Vector3 direction)
+    {
+        combatManager.Attack(direction);
+        yield return combatManager.currentWeapon.attackSpeed;
+        animationManager.AttackAnim(direction);
     }
 
     public IEnumerator ExecuteDeath()

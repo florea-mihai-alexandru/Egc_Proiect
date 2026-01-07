@@ -76,6 +76,7 @@ public class AnimationManager : MonoBehaviour
 
     public void UpdateAnimClipTimes()
     {
+        Debug.Log("UPDATING " + gameObject.name);
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
         foreach (AnimationClip clip in clips)
         {
@@ -113,6 +114,7 @@ public class AnimationManager : MonoBehaviour
 
     public void AttackAnim(Vector3 direction)
     {
+        Debug.Log("ataca" + gameObject.name);
         if (direction.x < 0)
         {
             FlipX(false);
@@ -122,7 +124,9 @@ public class AnimationManager : MonoBehaviour
             FlipX(true);
         }
         attacking = true;
+        Debug.Log("inainte " + animator.GetBool("Attacking") + attackTime);
         animator.SetBool("Attacking", attacking);
+        Debug.Log("dupa " + animator.GetBool("Attacking"));
         playingFor = 0;
     }
 
