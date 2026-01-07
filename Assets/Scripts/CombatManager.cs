@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CombatManager : MonoBehaviour
 {
@@ -27,7 +29,6 @@ public class CombatManager : MonoBehaviour
             return;
         }
         timeBtwAttack = currentWeapon.attackSpeed;
-        Debug.Log("Atac cu " + currentWeapon.weaponName);
 
         if (currentWeapon.isRanged)
         {
@@ -35,7 +36,7 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            ExecuteMeleeAttack(direction);
+            StartCoroutine(ExecuteMeleeAttack(direction));
         }
     }
 
@@ -57,14 +58,13 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void ExecuteMeleeAttack(Vector3 direction)
+    IEnumerator ExecuteMeleeAttack(Vector3 direction)
     {
+        yield return new WaitForSeconds(currentWeapon.attackSpeed);
         float scaleCompensation = transform.lossyScale.x;
         attackPos.localPosition = (direction * currentWeapon.offset) / scaleCompensation;
         
         Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange, whatIsEnemies);
-
-        Debug.Log(enemiesToDamage.Length);
 
         foreach (Collider enemy in enemiesToDamage)
         {
@@ -75,12 +75,10 @@ public class CombatManager : MonoBehaviour
                 PlayerStats enemyScript = enemy.GetComponentInChildren<PlayerStats>();
                 if (enemyScript != null)
                 {
-                    Debug.Log(currentWeapon.damage);
                     enemyScript.TakeDamage(currentWeapon.damage);
                 }
             //}
         }
-        Debug.Log(currentWeapon.name + " " + currentWeapon.damage);
     }
 
     private void OnDrawGizmosSelected()
