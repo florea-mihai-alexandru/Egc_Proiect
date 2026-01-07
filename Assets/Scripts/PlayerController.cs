@@ -12,22 +12,22 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb;
 
-    private Vector3 moveDir = Vector3.zero;
-    private Vector3 attackDir;
+    protected Vector3 moveDir = Vector3.zero;
+    protected Vector3 attackDir;
 
-    private CombatManager combatManager;
-    private AnimationManager animationManager;
+    protected CombatManager combatManager;
+    protected AnimationManager animationManager;
 
-    private PlayerStats stats;
+    protected PlayerStats stats;
 
-    private bool isWalking = false;
-    private bool dead = false;
+    protected bool isWalking = false;
+    protected bool dead = false;
 
     public Vector3 MoveDir { get => moveDir; set => moveDir = value; }
     public Vector3 AttackDir { get => attackDir; set => attackDir = value; }
     public bool IsWalking { get => isWalking; set => isWalking = value; }
 
-    void Start()
+    protected void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();        
         combatManager = gameObject.GetComponentInChildren<CombatManager>();
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         stats = gameObject.GetComponentInChildren<PlayerStats>();
     }
 
-    void Update()
+    protected void Update()
     {
         if (Time.timeScale == 0f) return;
 
