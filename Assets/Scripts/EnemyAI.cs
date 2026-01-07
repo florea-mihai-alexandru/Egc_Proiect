@@ -56,7 +56,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private LayerMask wallLayerMask;
 
-    private float obstacleAvoidanceColldown = 0.5f;
+    [SerializeField]
+    private float obstacleAvoidanceCooldown = 0.5f;
+
+    private float obstacleAvoidanceTime = 0.5f;
     private Vector3 obstacleAvoidanceTargetDir;
 
     private RaycastHit[] obstacleCollisions;
@@ -81,6 +84,12 @@ public class EnemyAI : MonoBehaviour
         currentState = AI_State.Patrolling;
         InitState();
         entityCollider = GetComponent<Collider>();
+        if (player.IsUnityNull())
+        {
+            GameObject objFound = GameObject.FindGameObjectWithTag("Player");
+            player = objFound.transform;
+            Debug.Log("Found Player automatically (" + gameObject.name + ")");
+        }
     }
 
     private void Update()
@@ -173,11 +182,11 @@ public class EnemyAI : MonoBehaviour
         }
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        obstacleAvoidanceColldown -= Time.deltaTime;
-        if (obstacleAvoidanceColldown <= 0)
+        obstacleAvoidanceTime -= Time.deltaTime;
+        if (obstacleAvoidanceTime <= 0)
         {
             directionToPlayer = player.position - transform.position;
-            obstacleAvoidanceColldown = 0.5f;
+            obstacleAvoidanceTime = obstacleAvoidanceCooldown;
         }
 
         directionToPlayer.y = 0;
@@ -277,7 +286,7 @@ public class EnemyAI : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, wallRange);
+            Gizmos.DrawWireSphere(transform.position, chaseDistanceThreshold);
     }
 
     private void OnDrawGizmos()
@@ -343,14 +352,12 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("colideaza");
         if ((wallLayerMask & (1 << collision.gameObject.layer)) != 0)
         {
             if (currentState == AI_State.Patrolling)
             {
                 randWalkDir = -randWalkDir;
             }
-            Debug.Log("perete");
         }
     }
     #endregion
