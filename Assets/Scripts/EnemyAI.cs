@@ -13,9 +13,11 @@ public class EnemyAI : MonoBehaviour
 {
     public UnityEvent<Vector3> OnMoveEvent;
     public UnityEvent<bool> ToggleWalkEvent;
+    public UnityEvent<bool> ToggleNavEvent;
     public UnityEvent<Vector3> OnAttack;
 
     private Vector3 randWalkDir = Vector3.zero;
+    private Vector3 destination = Vector3.zero;
 
     [SerializeField]
     private Transform player;
@@ -64,8 +66,6 @@ public class EnemyAI : MonoBehaviour
 
     private RaycastHit[] obstacleCollisions;
 
-    Collider entityCollider;
-
     #region State Variables
     private enum AI_State
     {
@@ -83,7 +83,6 @@ public class EnemyAI : MonoBehaviour
     {
         currentState = AI_State.Patrolling;
         InitState();
-        entityCollider = GetComponent<Collider>();
         if (player.IsUnityNull())
         {
             GameObject objFound = GameObject.FindGameObjectWithTag("Player");
@@ -150,7 +149,10 @@ public class EnemyAI : MonoBehaviour
         randWalkDir.Normalize();
 
         Vector3 finalDir = HandleObstacles(randWalkDir);
-        OnMoveEvent?.Invoke(finalDir);
+
+        randWalkDir *= 10;
+        randWalkDir += gameObject.transform.position;
+        OnMoveEvent?.Invoke(randWalkDir);
 
         patrolledTime += Time.deltaTime;
         if (patrolledTime > patrolTime)
@@ -193,7 +195,7 @@ public class EnemyAI : MonoBehaviour
         directionToPlayer.Normalize();
         Vector3 finalDir = HandleObstacles(directionToPlayer);
 
-        OnMoveEvent?.Invoke(finalDir);
+        OnMoveEvent?.Invoke(player.position);
 
         if (passedAttackTime < attackDelay)
         {
@@ -254,6 +256,7 @@ public class EnemyAI : MonoBehaviour
             case AI_State.Idle:
                 idledForTime = 0;
                 ToggleWalkEvent?.Invoke(false);
+                ToggleNavEvent?.Invoke(false);
                 break;
 
             case AI_State.Patrolling:
@@ -261,16 +264,19 @@ public class EnemyAI : MonoBehaviour
                 randWalkDir.x = rand.x;
                 randWalkDir.z = rand.y;
                 ToggleWalkEvent?.Invoke(true);
+                ToggleNavEvent?.Invoke(true);
 
                 patrolledTime = 0;
                 break;
 
             case AI_State.Chasing:
                 ToggleWalkEvent?.Invoke(false);
+                ToggleNavEvent?.Invoke(true);
                 break;
 
             case AI_State.Attacking:
                 ToggleWalkEvent?.Invoke(false);
+                ToggleNavEvent?.Invoke(false);
                 break;
         }
     }

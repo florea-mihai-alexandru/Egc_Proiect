@@ -24,7 +24,9 @@ public class AnimationManager : MonoBehaviour
 
     private void Awake()  
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+            Debug.LogError("ATENTIE, ANIMATOR NULL");
     }
 
     private void Start()

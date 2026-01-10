@@ -64,6 +64,7 @@ public class HUD_WeaponSwitch : MonoBehaviour
             int j = 0;
             foreach (Transform weapon in weaponHolderPlayer)
             {
+                //Debug.Log(weapon.name);
                 weapon.gameObject.SetActive(j == selectedWeapon);
                 j++;
             }
