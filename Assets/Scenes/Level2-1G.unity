@@ -300,12 +300,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1711522357}
     - target: {fileID: 3015080924903082758, guid: c2cf549e30f9d164e9b8ff885e92928a,
         type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1711522357}
     - target: {fileID: 3015080924903082759, guid: c2cf549e30f9d164e9b8ff885e92928a,
         type: 3}
       propertyPath: m_RootOrder
@@ -314,17 +314,17 @@ PrefabInstance:
     - target: {fileID: 3015080924903082759, guid: c2cf549e30f9d164e9b8ff885e92928a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41
+      value: 42.78499
       objectReference: {fileID: 0}
     - target: {fileID: 3015080924903082759, guid: c2cf549e30f9d164e9b8ff885e92928a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.6
+      value: 10.663
       objectReference: {fileID: 0}
     - target: {fileID: 3015080924903082759, guid: c2cf549e30f9d164e9b8ff885e92928a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 145
+      value: 145.901
       objectReference: {fileID: 0}
     - target: {fileID: 3015080924903082759, guid: c2cf549e30f9d164e9b8ff885e92928a,
         type: 3}
@@ -649,8 +649,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22503523}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 47.52, y: 2.24, z: 279.16}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 47.52, y: 4.87, z: 285.6}
+  m_LocalScale: {x: 1, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -14278,6 +14278,12 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!224 &1711522357 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5950180379840458569, guid: 902ac79acb60ddd48b84aade9825d8cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015491443028858817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1714398211
 GameObject:
   m_ObjectHideFlags: 0
@@ -18910,7 +18916,7 @@ PrefabInstance:
     - target: {fileID: 1515525473710944642, guid: 31cdecd1861e67a458059f13028a416b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41
+      value: 42.78499
       objectReference: {fileID: 0}
     - target: {fileID: 1515525473710944642, guid: 31cdecd1861e67a458059f13028a416b,
         type: 3}
