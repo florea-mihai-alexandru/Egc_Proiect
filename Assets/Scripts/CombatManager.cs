@@ -62,11 +62,8 @@ public class CombatManager : MonoBehaviour
     {
         yield return new WaitForSeconds(currentWeapon.attackSpeed);
         float scaleCompensation = transform.lossyScale.x;
-        if (direction.y != 0)
-            attackPos.localPosition = (direction * currentWeapon.offset)/scaleCompensation;
-        else
-            attackPos.localPosition = (direction * currentWeapon.offset) / scaleCompensation;
-
+        attackPos.localPosition = (direction * currentWeapon.offset);
+        attackPos.localPosition = new Vector3(attackPos.localPosition.x / scaleCompensation, attackPos.localPosition.y, attackPos.localPosition.z);
         Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange, whatIsEnemies);
 
         foreach (Collider enemy in enemiesToDamage)

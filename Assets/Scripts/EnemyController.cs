@@ -42,11 +42,23 @@ public class EnemyController : PlayerController
         {
             MoveDir = pointToFollow - gameObject.transform.position;
         }
+        else
+        {
+            MoveDir = Vector3.zero;
+        }
     }
     public void updateToPoint()
     {
         navigationAgent.isStopped = !isNavigating;
         navigationAgent.destination = pointToFollow;
+        if (isWalking)
+        {
+            navigationAgent.speed = speed * walkSlowdown;
+        }
+        else
+        {
+            navigationAgent.speed = speed;
+        }
     }
 
 }
