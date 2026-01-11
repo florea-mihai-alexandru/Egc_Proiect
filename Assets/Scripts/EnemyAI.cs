@@ -303,13 +303,13 @@ public class EnemyAI : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, chaseDistanceThreshold);
     }
 
-    private void OnDrawGizmos()
-    {
-        Vector3 direction = getCurDir();
+    //private void OnDrawGizmos()
+    //{
+    //    Vector3 direction = getCurDir();
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position + direction*obstacleCheckDistance, obstacleCheckRadius);
-    }
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireSphere(transform.position + direction*obstacleCheckDistance, obstacleCheckRadius);
+    //}
 
     private Vector3 HandleObstacles(Vector3 direction)
     {

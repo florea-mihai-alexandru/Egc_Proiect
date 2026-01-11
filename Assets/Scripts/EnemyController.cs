@@ -18,7 +18,11 @@ public class EnemyController : PlayerController
     private new void Start()
     {
         base.Start();
-        navigationAgent = GetComponent<NavMeshAgent>();
+        navigationAgent = GetComponentInChildren<NavMeshAgent>();
+        if (navigationAgent == null ) 
+            {
+            Debug.Log("EROAREEEEEEEEEEE");
+            }
         navigationAgent.updateRotation = false;
     }
 
@@ -37,7 +41,7 @@ public class EnemyController : PlayerController
         }
 
         updateToPoint();
-        this.transform.Rotate(new Vector3(45, 0, 0));
+        //this.transform.Rotate(new Vector3(45, 0, 0));
         if (isNavigating)
         {
             MoveDir = pointToFollow - gameObject.transform.position;
@@ -49,6 +53,7 @@ public class EnemyController : PlayerController
     }
     public void updateToPoint()
     {
+        Debug.Log("UPDATE " + gameObject.name);
         navigationAgent.isStopped = !isNavigating;
         navigationAgent.destination = pointToFollow;
         if (isWalking)

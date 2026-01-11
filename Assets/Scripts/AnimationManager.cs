@@ -101,16 +101,19 @@ public class AnimationManager : MonoBehaviour
 
     public void FlipX(bool flip)
     {
-        Vector3 scale = gameObject.transform.localScale;
-        if (flip)
+        if (gameObject.tag == "Player") 
         {
-            scale.x = -math.abs(scale.x);
-            transform.localScale = scale;
-        }
-        else
-        {
-            scale.x = math.abs(scale.x);
-            transform.localScale = scale;
+            Vector3 scale = gameObject.transform.localScale;
+            if (flip)
+            {
+                scale.x = -math.abs(scale.x);
+                transform.localScale = scale;
+            }
+            else
+            {
+                scale.x = math.abs(scale.x);
+                transform.localScale = scale;
+            }
         }
     }
 
