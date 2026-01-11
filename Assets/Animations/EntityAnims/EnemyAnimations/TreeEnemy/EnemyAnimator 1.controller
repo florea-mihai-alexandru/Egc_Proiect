@@ -34,7 +34,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2cf601511f339b54cbfd3955044cc127, type: 2}
+    m_Motion: {fileID: 7400000, guid: 550781d2253e2284195daa76667679f7, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -42,7 +42,7 @@ BlendTree:
     m_DirectBlendParameter: xVelocity
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2cf601511f339b54cbfd3955044cc127, type: 2}
+    m_Motion: {fileID: 7400000, guid: 550781d2253e2284195daa76667679f7, type: 2}
     m_Threshold: 0.5
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -50,7 +50,7 @@ BlendTree:
     m_DirectBlendParameter: xVelocity
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2cf601511f339b54cbfd3955044cc127, type: 2}
+    m_Motion: {fileID: 7400000, guid: 550781d2253e2284195daa76667679f7, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -58,7 +58,7 @@ BlendTree:
     m_DirectBlendParameter: xVelocity
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2cf601511f339b54cbfd3955044cc127, type: 2}
+    m_Motion: {fileID: 7400000, guid: 550781d2253e2284195daa76667679f7, type: 2}
     m_Threshold: 1.5
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -178,7 +178,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e3f57cc4af831e340ab9c0c637e32f01, type: 2}
+  m_Motion: {fileID: 7400000, guid: 550781d2253e2284195daa76667679f7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -282,7 +282,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 676bd4bc01e6bcf4ea4c2d8664fa0b92, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5a4001bbbe35e13429923a9af01672eb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
