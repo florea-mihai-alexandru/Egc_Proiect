@@ -7,6 +7,7 @@ using UnityEditor.PackageManager;
 using UnityEditor.Rendering;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
@@ -145,13 +146,6 @@ public class EnemyAI : MonoBehaviour
 
     private void PatrollStateUpdate()
     {
-        randWalkDir.y = 0;
-        randWalkDir.Normalize();
-
-        Vector3 finalDir = HandleObstacles(randWalkDir);
-
-        randWalkDir *= 10;
-        randWalkDir += gameObject.transform.position;
         OnMoveEvent?.Invoke(randWalkDir);
 
         patrolledTime += Time.deltaTime;
@@ -260,9 +254,10 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AI_State.Patrolling:
-                Vector2 rand = RandomUnitVector();
+                Vector3 rand = RandomNavSphere(transform.position, 10, -1);
+                Debug.Log(rand);
                 randWalkDir.x = rand.x;
-                randWalkDir.z = rand.y;
+                randWalkDir.z = rand.z;
                 ToggleWalkEvent?.Invoke(true);
                 ToggleNavEvent?.Invoke(true);
 
@@ -287,6 +282,19 @@ public class EnemyAI : MonoBehaviour
     {
         float random = Random.Range(0f, 260f);
         return new Vector2(Mathf.Cos(random), Mathf.Sin(random));
+    }
+
+    public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
+    {
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
+
+        randomDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition(randomDirection, out navHit, distance, layermask);
+
+        return navHit.position;
     }
 
     private void OnDrawGizmosSelected()
