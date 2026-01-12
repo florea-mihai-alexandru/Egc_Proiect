@@ -89,8 +89,8 @@ public class AnimationManager : MonoBehaviour
                     attackTime = clip.length;
                     break;
                 case "Death":
-                    Debug.Log("de");
                     deathTime = clip.length;
+                    Debug.Log("de" + deathTime);
                     break;
                 case "Idle":
                     Debug.Log("id");
@@ -119,7 +119,7 @@ public class AnimationManager : MonoBehaviour
 
     public void AttackAnim(Vector3 direction)
     {
-        Debug.Log("ataca" + gameObject.name);
+        //Debug.Log("ataca" + gameObject.name);
         if (direction.x < 0)
         {
             FlipX(false);
@@ -129,15 +129,16 @@ public class AnimationManager : MonoBehaviour
             FlipX(true);
         }
         attacking = true;
-        Debug.Log("inainte " + animator.GetBool("Attacking") + attackTime);
+        //Debug.Log("inainte " + animator.GetBool("Attacking") + attackTime);
         animator.SetBool("Attacking", attacking);
-        Debug.Log("dupa " + animator.GetBool("Attacking"));
+        //Debug.Log("dupa " + animator.GetBool("Attacking"));
         playingFor = 0;
     }
 
     public WaitForSeconds DeathAnim()
     {
         animator.SetBool("Death", true);
+        Debug.Log(deathTime);
         return new WaitForSeconds(deathTime);
     }
 }

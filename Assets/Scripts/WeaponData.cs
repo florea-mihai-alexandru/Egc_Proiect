@@ -13,4 +13,6 @@ public class WeaponData : ScriptableObject
     public bool isRanged;
     public GameObject projectilePrefab;
     public float projectileSpeed;
+
+    public Animator animator;
 }
