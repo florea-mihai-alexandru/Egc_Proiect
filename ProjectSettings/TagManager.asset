@@ -7,6 +7,7 @@ TagManager:
   - Pereti
   - Enemy
   - Rooms
+  - Sprite
   layers:
   - Default
   - TransparentFX

@@ -38,9 +38,6 @@ public class EnemyAI : MonoBehaviour
     private float idleTime = 2;  //Time until changes state to patrolling 
     private float idledForTime = 0;
 
-    [SerializeField]
-    private float wallRange = 1.5f;
-
     float distanceToPlayer;
     Vector3 directionToPlayer;
 

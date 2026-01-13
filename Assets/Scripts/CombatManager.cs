@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +15,20 @@ public class CombatManager : MonoBehaviour
     public Transform attackPos;
     public LayerMask whatIsEnemies;
 
+    const float yDirRotation = 60f;
+    private Vector3 originalRotation;
+
+    //[SerializeField]
+    private Transform weaponHolder;
+
+    SpriteRenderer sr;
+    private void Start()
+    {
+        originalRotation = weaponHolder.localRotation.eulerAngles;
+        sr = currentWeapon.spriteRenderer;
+    }
+
+
     private void Update()
     {
         if (timeBtwAttack > 0)
@@ -24,6 +39,30 @@ public class CombatManager : MonoBehaviour
 
     public void Attack(Vector3 direction)
     {
+        Debug.Log(direction);
+        Vector3 rotation = originalRotation;
+        if (direction == Vector3.forward)
+        {
+            rotation = new Vector3(originalRotation.x, yDirRotation, originalRotation.z);
+            FlipX(weaponHolder, false);
+        }
+        else if (direction == Vector3.right)
+        {
+            rotation = originalRotation;
+            FlipX(weaponHolder, true);
+        }
+        else if(direction == Vector3.left)
+        {
+            rotation = originalRotation;
+            FlipX(weaponHolder, false);
+        }
+        else if(direction == Vector3.back)
+        {
+            rotation = new Vector3(originalRotation.x, -yDirRotation, originalRotation.z);
+            FlipX(weaponHolder, false);
+        }
+        weaponHolder.rotation = Quaternion.Euler(rotation * transform.lossyScale.x);
+
         if (timeBtwAttack > 0)
         {
             return;
@@ -60,7 +99,10 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator ExecuteMeleeAttack(Vector3 direction)
     {
-        yield return new WaitForSeconds(currentWeapon.attackSpeed);
+        yield return new WaitForSeconds(currentWeapon.attackSpeed * 5);
+
+        weaponHolder.rotation = Quaternion.Euler(originalRotation);
+
         float scaleCompensation = transform.lossyScale.x;
         attackPos.localPosition = (direction * currentWeapon.offset);
         attackPos.localPosition = new Vector3(attackPos.localPosition.x / scaleCompensation, attackPos.localPosition.y, attackPos.localPosition.z);
@@ -88,5 +130,21 @@ public class CombatManager : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(attackPos.position, currentWeapon.attackRange);
         }
+    }
+
+
+    public void FlipX(Transform transform, bool flip)
+    { 
+            Vector3 scale = transform.localScale;
+            if (flip)
+            {
+                scale.x = -math.abs(scale.x);
+                transform.localScale = scale;
+            }
+            else
+            {
+                scale.x = math.abs(scale.x);
+                transform.localScale = scale;
+            }
     }
 }

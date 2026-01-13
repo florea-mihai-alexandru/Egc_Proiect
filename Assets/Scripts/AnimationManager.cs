@@ -22,6 +22,19 @@ public class AnimationManager : MonoBehaviour
     private AnimatorClipInfo[] curAnimatorClipInfos;
     private string curAnimName;
 
+    [SerializeField]
+    private Animator pixAnimator;
+
+    [SerializeField]
+    private Animator keyboardAnimator;
+
+    [SerializeField]
+    private Animator mouseAnimator;
+
+    private int curWeaponIndex;
+
+    public int CurWeaponIndex { get => curWeaponIndex; set => curWeaponIndex = value; }
+
     private void Awake()  
     {
         animator = GetComponentInChildren<Animator>();
@@ -47,6 +60,9 @@ public class AnimationManager : MonoBehaviour
             {
                 attacking = false;
                 animator.SetBool("Attacking", attacking);
+
+                Animator curAnimator = getCurWeaponAnimator();
+                curAnimator.SetBool("Attack", attacking);
             }
 
             playingFor += Time.deltaTime;
@@ -66,14 +82,14 @@ public class AnimationManager : MonoBehaviour
         //    gameObject.transform.localScale = originalScale;
         //}
 
-        if (x < 0)
-        {
-            FlipX(false);
-        }
-        else if (x > 0)
-        {
-            FlipX(true);
-        }
+        //if (x <= 0)
+        //{
+        //    FlipX(false);
+        //}
+        //else if (x > 0)
+        //{
+        //    FlipX(true);
+        //}
     }
 
     public void UpdateAnimClipTimes()
@@ -89,8 +105,8 @@ public class AnimationManager : MonoBehaviour
                     attackTime = clip.length;
                     break;
                 case "Death":
-                    Debug.Log("de");
                     deathTime = clip.length;
+                    Debug.Log("de" + deathTime);
                     break;
                 case "Idle":
                     Debug.Log("id");
@@ -99,45 +115,45 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    public void FlipX(bool flip)
-    {
-        if (gameObject.tag == "Player") 
-        {
-            Vector3 scale = gameObject.transform.localScale;
-            if (flip)
-            {
-                scale.x = -math.abs(scale.x);
-                transform.localScale = scale;
-            }
-            else
-            {
-                scale.x = math.abs(scale.x);
-                transform.localScale = scale;
-            }
-        }
-    }
-
     public void AttackAnim(Vector3 direction)
     {
-        Debug.Log("ataca" + gameObject.name);
-        if (direction.x < 0)
-        {
-            FlipX(false);
-        }
-        else if (direction.x > 0)
-        {
-            FlipX(true);
-        }
+        //Debug.Log("ataca" + gameObject.name);
+        //if (direction.x <= 0)
+        //{
+        //    FlipX(false);
+        //}
+        //else if (direction.x > 0)
+        //{
+        //    FlipX(true);
+        //}
+
         attacking = true;
-        Debug.Log("inainte " + animator.GetBool("Attacking") + attackTime);
         animator.SetBool("Attacking", attacking);
-        Debug.Log("dupa " + animator.GetBool("Attacking"));
+
+        Animator curAnimator = getCurWeaponAnimator();
+        curAnimator.SetBool("Attack", attacking);
+
         playingFor = 0;
     }
 
     public WaitForSeconds DeathAnim()
     {
         animator.SetBool("Death", true);
+        Debug.Log(deathTime);
         return new WaitForSeconds(deathTime);
+    }
+
+    public Animator getCurWeaponAnimator()
+    {
+        switch (curWeaponIndex)
+        {
+            case 0:
+                return pixAnimator;
+            case 1:
+                return keyboardAnimator;
+            case 2:
+                return mouseAnimator;
+        }
+        return null;
     }
 }
