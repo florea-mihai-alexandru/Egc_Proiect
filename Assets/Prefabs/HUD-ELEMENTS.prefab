@@ -567,12 +567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37448db4e2d3c4a44b9489fd72dda029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultWeapon: {fileID: 11400000, guid: e264ee3b9be599846883bd8b9a47ecb3, type: 2}
+  allWeapons: []
   selectedWeapon: 0
   playerAttack: {fileID: 0}
-  allWeapons:
-  - {fileID: 11400000, guid: e264ee3b9be599846883bd8b9a47ecb3, type: 2}
-  - {fileID: 11400000, guid: 765bdaf249aa39e48869620758bec8a2, type: 2}
-  - {fileID: 11400000, guid: c69f7a134a0796f4099f8af0f2ebd8d7, type: 2}
+  animationManager: {fileID: 0}
   weaponHolderHUD: {fileID: 5313548205398938031}
   weaponHolderPlayer: {fileID: 0}
 --- !u!1 &320476096580357929
