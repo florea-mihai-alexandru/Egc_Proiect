@@ -59,11 +59,19 @@ public class AnimationManager : MonoBehaviour
             if (playingFor >= attackTime)
             {
                 attacking = false;
-                //animator.SetBool("Attacking", attacking);
+                if(gameObject.tag != "Player")  
+                {
+                    animator.SetBool("Attacking", attacking);
+                }
 
-                Animator curAnimator = getCurWeaponAnimator();
-                curAnimator.SetBool("Attack", attacking);
+                if (gameObject.tag == "Player")
+                {
+                    Animator curAnimator = getCurWeaponAnimator();
+                    curAnimator.SetBool("Attack", attacking);
+                }
+            
             }
+
 
             playingFor += Time.deltaTime;
         }
@@ -128,11 +136,16 @@ public class AnimationManager : MonoBehaviour
         //}
 
         attacking = true;
-        //animator.SetBool("Attacking", attacking);
+        if(gameObject.tag != "Player")  
+        {
+            animator.SetBool("Attacking", attacking);
+        }
 
-        Animator curAnimator = getCurWeaponAnimator();
-        curAnimator.SetBool("Attack", attacking);
-
+        if(gameObject.tag == "Player")
+        {
+            Animator curAnimator = getCurWeaponAnimator();
+            curAnimator.SetBool("Attack", attacking);
+        }
         playingFor = 0;
     }
 

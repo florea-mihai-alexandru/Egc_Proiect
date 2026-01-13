@@ -229,6 +229,9 @@ MonoBehaviour:
   attackTime: 0
   deathTime: 0
   playingFor: 0
+  pixAnimator: {fileID: 0}
+  keyboardAnimator: {fileID: 0}
+  mouseAnimator: {fileID: 0}
 --- !u!114 &4085417086226958032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +249,7 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 128
+  weaponHolder: {fileID: 8370478478575878145}
 --- !u!114 &4085417086226958033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +328,6 @@ MonoBehaviour:
   attackDelay: 1.2
   patrolTime: 3
   idleTime: 2
-  wallRange: 2
   rotationSpeed: 0.5
   obstacleCheckRadius: 0.5
   obstacleCheckDistance: 0.9

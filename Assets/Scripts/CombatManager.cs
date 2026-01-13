@@ -101,15 +101,16 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator ExecuteMeleeAttack(Vector3 direction)
     {
-        yield return new WaitForSeconds(currentWeapon.attackSpeed * 5);
+        Debug.Log(currentWeapon.damage);
+        yield return new WaitForSeconds(currentWeapon.attackSpeed);
 
         weaponHolder.rotation = Quaternion.Euler(originalRotation);
 
         float scaleCompensation = transform.lossyScale.x;
         attackPos.localPosition = (direction * currentWeapon.offset);
         attackPos.localPosition = new Vector3(attackPos.localPosition.x / scaleCompensation, attackPos.localPosition.y, attackPos.localPosition.z);
-        Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange, whatIsEnemies);
-
+        Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange/2, whatIsEnemies);
+        Debug.Log(enemiesToDamage.Length);
         foreach (Collider enemy in enemiesToDamage)
         {
             Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
@@ -119,6 +120,7 @@ public class CombatManager : MonoBehaviour
                 PlayerStats enemyScript = enemy.GetComponentInChildren<PlayerStats>();
                 if (enemyScript != null)
                 {
+                Debug.Log("TOOK DAMAGE");
                     enemyScript.TakeDamage(currentWeapon.damage);
                 }
             //}
