@@ -22,6 +22,19 @@ public class AnimationManager : MonoBehaviour
     private AnimatorClipInfo[] curAnimatorClipInfos;
     private string curAnimName;
 
+    [SerializeField]
+    private Animator pixAnimator;
+
+    [SerializeField]
+    private Animator keyboardAnimator;
+
+    [SerializeField]
+    private Animator mouseAnimator;
+
+    private int curWeaponIndex;
+
+    public int CurWeaponIndex { get => curWeaponIndex; set => curWeaponIndex = value; }
+
     private void Awake()  
     {
         animator = GetComponentInChildren<Animator>();
@@ -47,6 +60,9 @@ public class AnimationManager : MonoBehaviour
             {
                 attacking = false;
                 animator.SetBool("Attacking", attacking);
+
+                Animator curAnimator = getCurWeaponAnimator();
+                curAnimator.SetBool("Attack", attacking);
             }
 
             playingFor += Time.deltaTime;
@@ -112,9 +128,11 @@ public class AnimationManager : MonoBehaviour
         //}
 
         attacking = true;
-        //Debug.Log("inainte " + animator.GetBool("Attacking") + attackTime);
         animator.SetBool("Attacking", attacking);
-        //Debug.Log("dupa " + animator.GetBool("Attacking"));
+
+        Animator curAnimator = getCurWeaponAnimator();
+        curAnimator.SetBool("Attack", attacking);
+
         playingFor = 0;
     }
 
@@ -123,5 +141,19 @@ public class AnimationManager : MonoBehaviour
         animator.SetBool("Death", true);
         Debug.Log(deathTime);
         return new WaitForSeconds(deathTime);
+    }
+
+    public Animator getCurWeaponAnimator()
+    {
+        switch (curWeaponIndex)
+        {
+            case 0:
+                return pixAnimator;
+            case 1:
+                return keyboardAnimator;
+            case 2:
+                return mouseAnimator;
+        }
+        return null;
     }
 }

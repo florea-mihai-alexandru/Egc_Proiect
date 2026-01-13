@@ -18,7 +18,7 @@ public class CombatManager : MonoBehaviour
     const float yDirRotation = 60f;
     private Vector3 originalRotation;
 
-    [SerializeField]
+    //[SerializeField]
     private Transform weaponHolder;
 
     SpriteRenderer sr;

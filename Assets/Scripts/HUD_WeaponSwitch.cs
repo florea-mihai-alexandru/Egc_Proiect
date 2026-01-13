@@ -6,10 +6,19 @@ using UnityEngine;
 public class HUD_WeaponSwitch : MonoBehaviour
 {
     public int selectedWeapon = 0;
+
+    [SerializeField]
     public CombatManager playerAttack;
+
+    [SerializeField]
+    public AnimationManager animationManager;
+
     public WeaponData[] allWeapons;
 
+    [SerializeField]
     public Transform weaponHolderHUD;
+
+    [SerializeField]
     public Transform weaponHolderPlayer;
 
     // Start is called before the first frame update
@@ -48,6 +57,7 @@ public class HUD_WeaponSwitch : MonoBehaviour
         if (playerAttack != null && allWeapons.Length > selectedWeapon)
         {
             playerAttack.currentWeapon = allWeapons[selectedWeapon];
+            animationManager.CurWeaponIndex = selectedWeapon;
         }
 
         //Control vizual HUD (folosind weaponHolderHUD)
