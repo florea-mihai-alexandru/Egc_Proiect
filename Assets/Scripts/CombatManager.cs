@@ -21,11 +21,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private Transform weaponHolder;
 
-    SpriteRenderer sr;
     private void Start()
     {
         originalRotation = weaponHolder.localRotation.eulerAngles;
-        sr = currentWeapon.spriteRenderer;
     }
 
 
@@ -39,29 +37,7 @@ public class CombatManager : MonoBehaviour
 
     public void Attack(Vector3 direction)
     {
-        Debug.Log(direction);
-        Vector3 rotation = originalRotation;
-        if (direction == Vector3.forward)
-        {
-            rotation = new Vector3(originalRotation.x, yDirRotation, originalRotation.z);
-            FlipX(weaponHolder, false);
-        }
-        else if (direction == Vector3.right)
-        {
-            rotation = originalRotation;
-            FlipX(weaponHolder, true);
-        }
-        else if(direction == Vector3.left)
-        {
-            rotation = originalRotation;
-            FlipX(weaponHolder, false);
-        }
-        else if(direction == Vector3.back)
-        {
-            rotation = new Vector3(originalRotation.x, -yDirRotation, originalRotation.z);
-            FlipX(weaponHolder, false);
-        }
-        weaponHolder.rotation = Quaternion.Euler(rotation * transform.lossyScale.x);
+        HandleRotationOnAttack(direction);
 
         if (timeBtwAttack > 0)
         {
@@ -77,6 +53,32 @@ public class CombatManager : MonoBehaviour
         {
             StartCoroutine(ExecuteMeleeAttack(direction));
         }
+    }
+
+    void HandleRotationOnAttack(Vector3 direction)
+    {
+        Vector3 rotation = originalRotation;
+        if (direction == Vector3.forward)
+        {
+            rotation = new Vector3(originalRotation.x, yDirRotation, originalRotation.z);
+            FlipX(weaponHolder, false);
+        }
+        else if (direction == Vector3.right)
+        {
+            rotation = originalRotation;
+            FlipX(weaponHolder, true);
+        }
+        else if (direction == Vector3.left)
+        {
+            rotation = originalRotation;
+            FlipX(weaponHolder, false);
+        }
+        else if (direction == Vector3.back)
+        {
+            rotation = new Vector3(originalRotation.x, -yDirRotation, originalRotation.z);
+            FlipX(weaponHolder, false);
+        }
+        weaponHolder.rotation = Quaternion.Euler(rotation * transform.lossyScale.x);
     }
 
     void ExecuteRangedAttack(Vector3 direction)
