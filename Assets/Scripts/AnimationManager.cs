@@ -59,7 +59,7 @@ public class AnimationManager : MonoBehaviour
             if (playingFor >= attackTime)
             {
                 attacking = false;
-                animator.SetBool("Attacking", attacking);
+                //animator.SetBool("Attacking", attacking);
 
                 Animator curAnimator = getCurWeaponAnimator();
                 curAnimator.SetBool("Attack", attacking);
@@ -128,7 +128,7 @@ public class AnimationManager : MonoBehaviour
         //}
 
         attacking = true;
-        animator.SetBool("Attacking", attacking);
+        //animator.SetBool("Attacking", attacking);
 
         Animator curAnimator = getCurWeaponAnimator();
         curAnimator.SetBool("Attack", attacking);
