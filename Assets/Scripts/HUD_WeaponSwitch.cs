@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,44 +6,41 @@ public class HUD_WeaponSwitch : MonoBehaviour
 {
     public int selectedWeapon = 0;
 
-    [SerializeField]
-    public CombatManager playerAttack;
+    [Header("Referințe Scripturi")]
+    [SerializeField] public CombatManager playerAttack;
+    [SerializeField] public AnimationManager animationManager;
 
-    [SerializeField]
-    public AnimationManager animationManager;
-
+    [Header("Configurare Arme")]
     public WeaponData[] allWeapons;
 
-    [SerializeField]
-    public Transform weaponHolderHUD;
+    [Header("Referințe Vizuale")]
+    [SerializeField] public Transform weaponHolderHUD;
+    [SerializeField] public Transform weaponHolderPlayer;
 
-    [SerializeField]
-    public Transform weaponHolderPlayer;
-
-    // Start is called before the first frame update
     void Start()
     {
         SelectWeapon();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.timeScale == 0f) return;
-        if ( Input.GetKeyDown(KeyCode.Q) )
+
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             selectedWeapon--;
-            if ( selectedWeapon < 0 )
-            { 
+            if (selectedWeapon < 0)
+            {
                 selectedWeapon = allWeapons.Length - 1;
             }
             SelectWeapon();
         }
-        if ( Input.GetKeyDown(KeyCode.E) )
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             selectedWeapon++;
-            if ( selectedWeapon >= allWeapons.Length )
-            { 
+            if (selectedWeapon >= allWeapons.Length)
+            {
                 selectedWeapon = 0;
             }
             SelectWeapon();
@@ -53,28 +49,29 @@ public class HUD_WeaponSwitch : MonoBehaviour
 
     void SelectWeapon()
     {
-        //Sincronizare date atac
         if (playerAttack != null && allWeapons.Length > selectedWeapon)
         {
             playerAttack.currentWeapon = allWeapons[selectedWeapon];
-            animationManager.CurWeaponIndex = selectedWeapon;
+
+            if (animationManager != null)
+                animationManager.CurWeaponIndex = selectedWeapon;
         }
 
-        //Control vizual HUD (folosind weaponHolderHUD)
-        int i = 0;
-        foreach (Transform weapon in weaponHolderHUD)
+        if (weaponHolderHUD != null)
         {
-            weapon.gameObject.SetActive(i == selectedWeapon);
-            i++;
+            int i = 0;
+            foreach (Transform weapon in weaponHolderHUD)
+            {
+                weapon.gameObject.SetActive(i == selectedWeapon);
+                i++;
+            }
         }
 
-        //Control vizual Player (folosind weaponHolderPlayer)
         if (weaponHolderPlayer != null)
         {
             int j = 0;
             foreach (Transform weapon in weaponHolderPlayer)
             {
-                //Debug.Log(weapon.name);
                 weapon.gameObject.SetActive(j == selectedWeapon);
                 j++;
             }
