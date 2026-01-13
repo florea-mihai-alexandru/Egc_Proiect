@@ -54,15 +54,22 @@ public class EnemyController : PlayerController
     public void updateToPoint()
     {
         //Debug.Log("UPDATE " + gameObject.name);
-        navigationAgent.isStopped = !isNavigating;
-        navigationAgent.destination = pointToFollow;
-        if (isWalking)
+        try
         {
-            navigationAgent.speed = speed * walkSlowdown;
+            navigationAgent.isStopped = !isNavigating;
+            navigationAgent.destination = pointToFollow;
+                if (isWalking)
+                {
+                    navigationAgent.speed = speed * walkSlowdown;
+                }
+                else
+                {
+                    navigationAgent.speed = speed;
+                } 
         }
-        else
+        catch 
         {
-            navigationAgent.speed = speed;
+            Debug.LogWarning("Eroare la AI inamic " + gameObject.name);
         }
     }
 
