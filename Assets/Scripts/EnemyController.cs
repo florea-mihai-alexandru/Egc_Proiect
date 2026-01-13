@@ -53,7 +53,7 @@ public class EnemyController : PlayerController
     }
     public void updateToPoint()
     {
-        Debug.Log("UPDATE " + gameObject.name);
+        //Debug.Log("UPDATE " + gameObject.name);
         navigationAgent.isStopped = !isNavigating;
         navigationAgent.destination = pointToFollow;
         if (isWalking)

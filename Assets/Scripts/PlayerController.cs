@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
     {
         foreach(Transform child in gameObject.transform)
         {
-            child.gameObject.SetActive(false);
+            if(child.name == "WeaponHolder")
+                child.gameObject.SetActive(false);
         }
         dead = true;
         yield return animationManager.DeathAnim();

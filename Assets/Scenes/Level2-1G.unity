@@ -4520,6 +4520,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 320476095349298044, guid: 961bff1f265aed1419942357fc22a48a,
+        type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 1711522359}
     - target: {fileID: 320476095649299513, guid: 961bff1f265aed1419942357fc22a48a,
         type: 3}
       propertyPath: m_RootOrder
@@ -4580,6 +4585,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD-ELEMENTS
       objectReference: {fileID: 0}
+    - target: {fileID: 320476096434223559, guid: 961bff1f265aed1419942357fc22a48a,
+        type: 3}
+      propertyPath: playerAttack
+      value: 
+      objectReference: {fileID: 1711522361}
+    - target: {fileID: 320476096434223559, guid: 961bff1f265aed1419942357fc22a48a,
+        type: 3}
+      propertyPath: animationManager
+      value: 
+      objectReference: {fileID: 1711522360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 961bff1f265aed1419942357fc22a48a, type: 3}
 --- !u!1 &517727912
@@ -14284,6 +14299,42 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2015491443028858817}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1711522359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5950180379840458577, guid: 902ac79acb60ddd48b84aade9825d8cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015491443028858817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0b64c0b1dccc64d91eee52d85267bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1711522360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5950180379840458574, guid: 902ac79acb60ddd48b84aade9825d8cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015491443028858817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee781895b70ec974b8812f7001b0faee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1711522361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5950180379840458575, guid: 902ac79acb60ddd48b84aade9825d8cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015491443028858817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7aab89bd8e3a184587f48494d80ae8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714398211
 GameObject:
   m_ObjectHideFlags: 0
@@ -16637,6 +16688,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1897540908}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1919320463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2431177675807368185, guid: 902ac79acb60ddd48b84aade9825d8cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015491443028858817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921242793
 GameObject:
   m_ObjectHideFlags: 0
@@ -16900,6 +16957,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4433388430019206, guid: 4f9d36e206efd9c408c4487f1d8c65af,
     type: 3}
   m_PrefabInstance: {fileID: 1984586932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1989828221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5406540474286939990, guid: 902ac79acb60ddd48b84aade9825d8cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015491443028858817}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1997044819
 GameObject:
@@ -19062,6 +19125,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5950180379840458575, guid: 902ac79acb60ddd48b84aade9825d8cb,
+        type: 3}
+      propertyPath: attackPos
+      value: 
+      objectReference: {fileID: 1989828221}
+    - target: {fileID: 5950180379840458575, guid: 902ac79acb60ddd48b84aade9825d8cb,
+        type: 3}
+      propertyPath: weaponHolder
+      value: 
+      objectReference: {fileID: 1919320463}
     - target: {fileID: 6327329983136628299, guid: 902ac79acb60ddd48b84aade9825d8cb,
         type: 3}
       propertyPath: cam

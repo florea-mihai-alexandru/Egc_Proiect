@@ -1213,6 +1213,21 @@ PrefabInstance:
       propertyPath: chaseDistanceThreshold
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4085417086226958059, guid: a791d6f5eb48abe45adda942a9b433dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085417086226958059, guid: a791d6f5eb48abe45adda942a9b433dc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 39.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085417086226958059, guid: a791d6f5eb48abe45adda942a9b433dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 153.78
+      objectReference: {fileID: 0}
     - target: {fileID: 7248820238931891165, guid: a791d6f5eb48abe45adda942a9b433dc,
         type: 3}
       propertyPath: speed
