@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -4, y: 30}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &320476095920076191
 CanvasRenderer:
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5956785b2be4a41f58f2f834de40867c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5dbcfb307b5aec649a399352959b0d98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 320476095954048612}
   - component: {fileID: 320476095954048613}
   m_Layer: 5
-  m_Name: Keyboard
+  m_Name: Tastatura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,8 +229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -4, y: 30}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &320476095954048612
 CanvasRenderer:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1cd5b9938edbb4ec1a4978eeeea8a0b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c0e2ba50532eb540b1081f39538ff90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -567,11 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37448db4e2d3c4a44b9489fd72dda029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeapon: {fileID: 11400000, guid: e264ee3b9be599846883bd8b9a47ecb3, type: 2}
-  allWeapons: []
   selectedWeapon: 0
   playerAttack: {fileID: 0}
   animationManager: {fileID: 0}
+  allWeapons: []
   weaponHolderHUD: {fileID: 5313548205398938031}
   weaponHolderPlayer: {fileID: 0}
 --- !u!1 &320476096580357929
@@ -647,7 +646,7 @@ GameObject:
   - component: {fileID: 320476096704144173}
   - component: {fileID: 320476096704144174}
   m_Layer: 5
-  m_Name: Pen
+  m_Name: Pix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,8 +669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -4, y: 30}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &320476096704144173
 CanvasRenderer:
@@ -701,7 +700,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ad4bde4ff881b433c9782cb194049b0f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 835d5b415baf5014b934a4df3062871f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
