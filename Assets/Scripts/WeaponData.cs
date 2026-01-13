@@ -15,4 +15,5 @@ public class WeaponData : ScriptableObject
     public float projectileSpeed;
 
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
 }

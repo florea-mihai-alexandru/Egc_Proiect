@@ -66,14 +66,14 @@ public class AnimationManager : MonoBehaviour
         //    gameObject.transform.localScale = originalScale;
         //}
 
-        if (x < 0)
-        {
-            FlipX(false);
-        }
-        else if (x > 0)
-        {
-            FlipX(true);
-        }
+        //if (x <= 0)
+        //{
+        //    FlipX(false);
+        //}
+        //else if (x > 0)
+        //{
+        //    FlipX(true);
+        //}
     }
 
     public void UpdateAnimClipTimes()
@@ -99,35 +99,18 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    public void FlipX(bool flip)
-    {
-        if (gameObject.tag == "Player") 
-        {
-            Vector3 scale = gameObject.transform.localScale;
-            if (flip)
-            {
-                scale.x = -math.abs(scale.x);
-                transform.localScale = scale;
-            }
-            else
-            {
-                scale.x = math.abs(scale.x);
-                transform.localScale = scale;
-            }
-        }
-    }
-
     public void AttackAnim(Vector3 direction)
     {
         //Debug.Log("ataca" + gameObject.name);
-        if (direction.x < 0)
-        {
-            FlipX(false);
-        }
-        else if (direction.x > 0)
-        {
-            FlipX(true);
-        }
+        //if (direction.x <= 0)
+        //{
+        //    FlipX(false);
+        //}
+        //else if (direction.x > 0)
+        //{
+        //    FlipX(true);
+        //}
+
         attacking = true;
         //Debug.Log("inainte " + animator.GetBool("Attacking") + attackTime);
         animator.SetBool("Attacking", attacking);
