@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346192991283569782}
   - component: {fileID: 1346192991283569783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1346192991499955685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346192991639497660}
   - component: {fileID: 1346192991639497661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346192991856532813}
   - component: {fileID: 1346192991856532810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1346192992668636892}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,9 +335,9 @@ GameObject:
   - component: {fileID: 6788362278576483125}
   - component: {fileID: 6788362278576483082}
   - component: {fileID: 6788362278576483083}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 7387955863988108046}
   - component: {fileID: 7387955863988108045}
   - component: {fileID: 7387955863988108044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeEnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

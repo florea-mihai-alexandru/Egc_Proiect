@@ -101,7 +101,6 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator ExecuteMeleeAttack(Vector3 direction)
     {
-        Debug.Log(currentWeapon.damage);
         yield return new WaitForSeconds(currentWeapon.attackSpeed);
 
         weaponHolder.rotation = Quaternion.Euler(originalRotation);
@@ -110,7 +109,6 @@ public class CombatManager : MonoBehaviour
         attackPos.localPosition = (direction * currentWeapon.offset);
         attackPos.localPosition = new Vector3(attackPos.localPosition.x / scaleCompensation, attackPos.localPosition.y, attackPos.localPosition.z);
         Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange/2, whatIsEnemies);
-        Debug.Log(enemiesToDamage.Length);
         foreach (Collider enemy in enemiesToDamage)
         {
             Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;

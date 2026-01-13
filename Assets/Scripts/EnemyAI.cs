@@ -252,7 +252,6 @@ public class EnemyAI : MonoBehaviour
 
             case AI_State.Patrolling:
                 Vector3 rand = RandomNavSphere(transform.position, 10, -1);
-                Debug.Log(rand);
                 randWalkDir.x = rand.x;
                 randWalkDir.z = rand.z;
                 ToggleWalkEvent?.Invoke(true);

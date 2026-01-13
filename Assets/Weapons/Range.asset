@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Range
   damage: 1
-  attackSpeed: 0.2
+  attackSpeed: 0.4
   attackRange: 10
   offset: 0
   weaponModel: {fileID: 0}
