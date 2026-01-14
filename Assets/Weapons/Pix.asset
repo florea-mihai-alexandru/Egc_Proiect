@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Pix
   damage: 0.5
-  attackSpeed: 0.4
+  attackSpeed: 0.33
   attackRange: 0.6
   offset: 1
   weaponModel: {fileID: 0}

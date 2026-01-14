@@ -101,13 +101,14 @@ public class CombatManager : MonoBehaviour
 
     IEnumerator ExecuteMeleeAttack(Vector3 direction)
     {
+        float scaleCompensation = transform.lossyScale.x;
+        attackPos.localPosition = (direction * currentWeapon.offset);
+        attackPos.localPosition = new Vector3(attackPos.localPosition.x / scaleCompensation, attackPos.localPosition.y, attackPos.localPosition.z);
+
         yield return new WaitForSeconds(currentWeapon.attackSpeed);
 
         weaponHolder.rotation = Quaternion.Euler(originalRotation);
 
-        float scaleCompensation = transform.lossyScale.x;
-        attackPos.localPosition = (direction * currentWeapon.offset);
-        attackPos.localPosition = new Vector3(attackPos.localPosition.x / scaleCompensation, attackPos.localPosition.y, attackPos.localPosition.z);
         Collider[] enemiesToDamage = Physics.OverlapSphere(attackPos.position, currentWeapon.attackRange/2, whatIsEnemies);
         foreach (Collider enemy in enemiesToDamage)
         {
