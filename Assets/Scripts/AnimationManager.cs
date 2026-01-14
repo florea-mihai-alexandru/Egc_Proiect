@@ -34,6 +34,12 @@ public class AnimationManager : MonoBehaviour
 
     private int curWeaponIndex;
 
+    public GameObject keyExplosionObject;
+    public GameObject inkExplosionObject;
+    private GameObject ExplosionInstance;
+
+    public Transform attackPos;
+
     public int CurWeaponIndex { get => curWeaponIndex; set => curWeaponIndex = value; }
 
     private void Awake()  
@@ -69,6 +75,15 @@ public class AnimationManager : MonoBehaviour
                 {
                     Animator curAnimator = getCurWeaponAnimator();
                     curAnimator.SetBool("Attack", attacking);
+ 
+                    if (curAnimator == keyboardAnimator)
+                    {
+                        AddExplosion(keyExplosionObject);
+                    }
+                    else if (curAnimator == pixAnimator)
+                    {
+                        AddInkExplosion(inkExplosionObject);
+                    }
                 }
             
             }
@@ -187,5 +202,27 @@ public class AnimationManager : MonoBehaviour
                 return mouseAnimator;
         }
         return null;
+    }
+
+    private void AddExplosion(GameObject Explosion)
+    {
+        ExplosionInstance = Instantiate(Explosion);
+        //ExplosionInstance = Instantiate(Explosion, attackPos.localPosition, Quaternion.identity);
+        ExplosionInstance.transform.SetPositionAndRotation(attackPos.position + new Vector3(-2.3f , 1f, 0.3f), attackPos.rotation);
+        //ExplosionInstance.transform.SetPositionAndRotation(attackPos.position, attackPos.rotation);
+        Vector3 direction = attackPos.position - gameObject.transform.position;
+        ExplosionInstance.transform.position += Vector3.right * direction.x * 1.2f;
+        Debug.Log(gameObject.transform.position + " " + ExplosionInstance.transform.position + "AICIIIII");
+    }
+
+    private void AddInkExplosion(GameObject Explosion)
+    {
+        ExplosionInstance = Instantiate(Explosion);
+        //ExplosionInstance = Instantiate(Explosion, attackPos.localPosition, Quaternion.identity);
+        ExplosionInstance.transform.SetPositionAndRotation(attackPos.position + new Vector3(5.5f , -5f, 0.3f), attackPos.rotation);
+        //ExplosionInstance.transform.SetPositionAndRotation(attackPos.position, attackPos.rotation);
+        Vector3 direction = attackPos.position - gameObject.transform.position;
+        ExplosionInstance.transform.position += Vector3.right * direction.x;
+        Debug.Log(gameObject.transform.position + " " + ExplosionInstance.transform.position + "AICIIIII");
     }
 }

@@ -8232,6 +8232,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 7259127240997484555, guid: 158501c1eee577342adf3100bfdb83fa,
+        type: 3}
+      propertyPath: attackPos
+      value: 
+      objectReference: {fileID: 1749049739}
+    - target: {fileID: 7259127240997484555, guid: 158501c1eee577342adf3100bfdb83fa,
+        type: 3}
+      propertyPath: inkExplosionObject
+      value: 
+      objectReference: {fileID: 3638723097596971793, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+    - target: {fileID: 7259127240997484555, guid: 158501c1eee577342adf3100bfdb83fa,
+        type: 3}
+      propertyPath: keyExplosionObject
+      value: 
+      objectReference: {fileID: 2207393465057233988, guid: 86330d07c6a980b4c90ab13e5f8a80dd,
+        type: 3}
     - target: {fileID: 7259127240997484556, guid: 158501c1eee577342adf3100bfdb83fa,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10326,6 +10343,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &427958799
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15197,6 +15217,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &618159435
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29515,6 +29538,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &965628389
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36085,6 +36111,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1203965192
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -37059,6 +37088,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1260454279
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -40975,147 +41007,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1416078156
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1416078158}
-  - component: {fileID: 1416078157}
-  - component: {fileID: 1416078159}
-  m_Layer: 0
-  m_Name: Muzica
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!82 &1416078157
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416078156}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ff86b015a1ce6cd45932069290dd728f, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &1416078158
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416078156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.67448, y: -0.90315676, z: 154.52403}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1416078159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416078156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139ce089cf6065d4b8f196c657326542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1419557349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43550,6 +43441,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1527886857
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -48012,6 +47906,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1662066668
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -51169,6 +51066,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1746875288}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1749049739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9018796554479372307, guid: 158501c1eee577342adf3100bfdb83fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 349053393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1750486193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52754,6 +52657,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1808590696
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -55665,6 +55571,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1912725266
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -59502,6 +59411,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &2017445602
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -66355,6 +66267,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2715557627734880838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3638723097280991590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3638723097596971793, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_Name
+      value: InkExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.217
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 158.158
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638723097596971807, guid: 7296486fbf510b145882b2d2c1593dd1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7296486fbf510b145882b2d2c1593dd1, type: 3}
 --- !u!1 &3748357681713629467
 GameObject:
   m_ObjectHideFlags: 0
@@ -66735,6 +66716,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &4085417085386003930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67196,6 +67180,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &4085417085913204875
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -67688,6 +67675,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &4085417086444477618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68056,6 +68046,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &4085417086958505978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68326,6 +68319,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &4085417087008106766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68681,6 +68677,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &4085417087163785103
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -70847,6 +70846,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &6570399789687462399
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -71707,6 +71709,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &6788362278060557709
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -71969,6 +71974,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &6788362278638254938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72435,6 +72443,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &6788362279182831787
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -72604,6 +72615,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &6788362279183286645
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -72861,6 +72875,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &6788362279372173463
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73141,6 +73158,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &6788362279695883558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73406,6 +73426,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!114 &7059069528853027946
 MonoBehaviour:
   m_ObjectHideFlags: 0
