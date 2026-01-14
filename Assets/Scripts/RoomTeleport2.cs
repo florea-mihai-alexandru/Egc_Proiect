@@ -5,56 +5,84 @@ using Cinemachine;
 
 public class RoomTeleport2 : MonoBehaviour
 {
-    [Header("Where to go")]
-    [Tooltip("The empty object where the player spawns. ROTATE this object to set player facing direction.")]
+    [Header("Teleport Settings")]
     [SerializeField] private Transform destination;
+    [SerializeField] private string playerTag = "Player";
 
-    [Header("Camera Settings")]
-    [Tooltip("The Collider defining the NEW room's boundaries.")]
-    [SerializeField] private Collider newRoomBoundary;
+    [Header("Confiner Settings")]
+    [SerializeField] private Collider roomCameraBoundary;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+
+    [Header("Camera Position Settings")]
+    [Tooltip("Bifeaza daca vrei sa schimbi offset-ul camerei în aceasta camera nou?.")]
+    [SerializeField] private bool changeCameraOffset = false;
+
+    [Tooltip("Noua pozitie a camerei fata de jucator (Follow Offset).")]
+    [SerializeField] private Vector3 newFollowOffset = new Vector3(0, 10, -10);
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
         {
-            PerformTransition(other.gameObject);
+            TeleportAndSwitchCamera(other.gameObject);
         }
     }
 
-    private void PerformTransition(GameObject player)
+    private void TeleportAndSwitchCamera(GameObject player)
     {
-        // 1. Disable CharacterController to prevent physics conflicts
+        if (destination == null || virtualCamera == null) return;
+
         CharacterController cc = player.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
 
-        // 2. Calculate displacement for the Camera Warp
         Vector3 displacement = destination.position - player.transform.position;
-
-        // 3. TELEPORT POSITION
         player.transform.position = destination.position;
 
-        // 4. TELEPORT ROTATION (Crucial for your case)
-        // The player will instantly snap to face the same direction as the "Destination" object.
-        player.transform.rotation = destination.rotation;
-
-        // 5. CAMERA: Instant Warp
-        // This stops the camera from panning smoothly across the void. It cuts instantly.
         CinemachineCore.Instance.OnTargetObjectWarped(player.transform, displacement);
 
-        // 6. CAMERA: Switch Room Boundaries
-        // Instead of resizing the collider, we just swap the reference. Much safer.
-        if (virtualCamera != null && newRoomBoundary != null)
+        if (changeCameraOffset)
         {
-            CinemachineConfiner confiner = virtualCamera.GetComponent<CinemachineConfiner>();
-            if (confiner != null)
+            var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+            if (transposer != null)
             {
-                confiner.m_BoundingVolume = newRoomBoundary;
+                transposer.m_FollowOffset = newFollowOffset;
+            }
+            else
+            {
+                Debug.LogWarning("Virtual Camera nu are componenta 'CinemachineTransposer' setata la Body.");
+            }
+        }
+        CinemachineConfiner confiner = virtualCamera.GetComponent<CinemachineConfiner>();
+
+        if (confiner != null && confiner.m_BoundingVolume != null && roomCameraBoundary != null)
+        {
+            BoxCollider masterCollider = confiner.m_BoundingVolume as BoxCollider;
+            BoxCollider targetBlueprint = roomCameraBoundary as BoxCollider;
+
+            if (masterCollider != null && targetBlueprint != null)
+            {
+                masterCollider.transform.position = targetBlueprint.transform.position;
+                masterCollider.transform.rotation = targetBlueprint.transform.rotation;
+
+                masterCollider.size = targetBlueprint.size;
+                masterCollider.center = targetBlueprint.center;
+
                 confiner.InvalidatePathCache();
             }
         }
 
-        // 7. Re-enable CharacterController
+        // 5. Reactivare CharacterController
         if (cc != null) cc.enabled = true;
     }
 }
