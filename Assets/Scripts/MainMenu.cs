@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public AudioSource hoverSound;
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync(2);
     }
     public void QuitGame()
     {
