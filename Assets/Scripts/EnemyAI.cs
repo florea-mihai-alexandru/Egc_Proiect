@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TMPro.Examples;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
-using UnityEditor.Rendering;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
