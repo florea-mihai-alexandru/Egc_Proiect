@@ -2132,6 +2132,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &124234629
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6164,6 +6167,52 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.8, y: 0, z: 40}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &550780805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550780807}
+  - component: {fileID: 550780806}
+  m_Layer: 0
+  m_Name: BossMM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &550780806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550780805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e68506b7e0d446999180461c232cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obiectParinteSpecific: {fileID: 6823526039354385842}
+  sferaTinta: {fileID: 22503525}
+--- !u!4 &550780807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550780805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.217693, y: 5.372324, z: 252.63338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &554167446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6554,6 +6603,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &570298230
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13701,6 +13753,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1391394371
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13975,6 +14030,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &1398337257
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23355,6 +23413,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &2117194334
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23617,6 +23678,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &2119006538
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23879,6 +23943,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!195 &2120768726
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -25027,6 +25094,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &902153835704356501
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26219,6 +26289,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &2367516811537484117
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26780,6 +26853,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &3160247671520844957
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -27237,6 +27313,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &3904194738350342697
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -27512,6 +27591,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &3962015523051325053
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28918,6 +29000,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &5718162581812510827
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29206,6 +29291,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!95 &5970921147042619092
 Animator:
   serializedVersion: 5
@@ -29556,6 +29644,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!135 &6503365669138412307
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30951,6 +31042,9 @@ MonoBehaviour:
   pixAnimator: {fileID: 0}
   keyboardAnimator: {fileID: 0}
   mouseAnimator: {fileID: 0}
+  keyExplosionObject: {fileID: 0}
+  inkExplosionObject: {fileID: 0}
+  attackPos: {fileID: 0}
 --- !u!33 &8721833543815561524
 MeshFilter:
   m_ObjectHideFlags: 0
